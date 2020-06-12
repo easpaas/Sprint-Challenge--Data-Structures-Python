@@ -3,18 +3,15 @@
     # oldest element in the ring buffer is overwritten with the newest element 
 class RingBuffer:
     def __init__(self, capacity):
+        self.buffer = []
         self.capacity = capacity
-        self.storage = list()
 
     def append(self, item):
-        # for item in range(capacity)
-        # or 
-        # while len(storage) < capacity
-        if item not in self.storage: 
-            self.storage.append(item)
-            return True
-        else: 
-            return False
+        # before append check if length of buffer is equal to capacity?
+        if len(self.buffer) < self.capacity:
+            self.buffer.append(item)
+        else:
+            self.buffer[0] = item
 
     def get(self):
-        return self.storage
+        return self.buffer
